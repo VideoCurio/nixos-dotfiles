@@ -29,3 +29,21 @@ This is my configurations files to set up a [COSMIC dekstop environment](https:/
    dotfiles status
    dotfiles pull
    ```
+
+## Development notes
+Initial set-up:
+```bash
+git init --bare $HOME/.dotfiles
+echo ".dotfiles" >> $HOME/.gitignore
+echo "alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
+source $HOME/.zshrc
+dotfiles config --local status.showUntrackedFiles no
+dotfiles status
+dotfiles add .zshrc
+dotfiles add ~/.config/alacritty/
+dotfiles add ~/.config/cosmic/
+dotfiles commit -a -m "Initial release"
+dotfiles branch -M main
+dotfiles remote add origin git@github.com:VideoCurio/nixos-dotfiles.git
+dotfiles push -u origin main
+```
