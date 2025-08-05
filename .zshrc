@@ -141,5 +141,3 @@ autoload -Uz promptinit && promptinit
 prompt_themes+=( mytheme )
 # And load it
 prompt mytheme
-
-source ~/.zshrc-ai.plugin.zsh
