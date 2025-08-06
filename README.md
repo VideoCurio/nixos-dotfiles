@@ -24,11 +24,16 @@ This is my configurations files to set up a [COSMIC dekstop environment](https:/
    ```bash
    dotfiles config --local status.showUntrackedFiles no
    ```
-6. Installation is finish now, you can use regular git command to update your dotfiles:
+6. Making a hard reset to discard local change completely:
+   ```bash
+   dotfiles reset --hard
+   ```
+7. Installation is finish now, you can use regular git command to update your dotfiles:
    ```bash
    dotfiles status
    dotfiles pull
    ```
+   Relaunch your Alacritty terminal to see the changes.
 
 ## Development notes
 Initial set-up:
