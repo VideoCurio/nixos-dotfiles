@@ -10,7 +10,7 @@ This is my configurations files to set up a [COSMIC dekstop environment](https:/
    ```
 2. Avoid future recursion problems:
    ```bash
-   echo ".dotfiles" >> $HOME/.gitignore
+   echo ".dotfiles/" >> $HOME/.gitignore
    ```
 3. Clone this repo:
    ```bash
@@ -34,7 +34,8 @@ This is my configurations files to set up a [COSMIC dekstop environment](https:/
 Initial set-up:
 ```bash
 git init --bare $HOME/.dotfiles
-echo ".dotfiles" >> $HOME/.gitignore
+echo ".dotfiles/" >> $HOME/.gitignore
+echo ".config/cosmic/com.system76.CosmicComp/v1/xkb_config" >> $HOME/.gitignore
 echo "alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 source $HOME/.zshrc
 dotfiles config --local status.showUntrackedFiles no

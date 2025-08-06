@@ -26,6 +26,7 @@ alias df="duf"
 alias du="dust"
 alias find="fd"
 # Custom dotfiles
+# See: https://github.com/VideoCurio/nixos-dotfiles
 alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Keep 5000 lines of history within the shell and save it to ~/.zsh_history:
@@ -43,7 +44,7 @@ DISABLE_AUTO_TITLE="true"
 #export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 # OR system SSH agent
 #eval $(ssh-agent)
-#ssh-add ~/.ssh/id_ed25519_david_at_videocurio_dot_com
+#ssh-add ~/.ssh/id_ed25519
 # OR config pam_ssh
 
 # git functions
