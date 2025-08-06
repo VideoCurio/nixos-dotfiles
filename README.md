@@ -4,36 +4,16 @@ This is my configurations files to set up a [COSMIC dekstop environment](https:/
 
 ## Installation
 
-1. Open a terminal and type:
-   ```bash
-   alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-   ```
-2. Avoid future recursion problems:
-   ```bash
-   echo ".dotfiles/" >> $HOME/.gitignore
-   ```
-3. Clone this repo:
-   ```bash
-   git clone --bare https://github.com/VideoCurio/nixos-dotfiles $HOME/.dotfiles
-   ```
-4. Do a check-out
-   ```bash
-   dotfiles checkout
-   ```
-5. Set a do not show on untracked files.
-   ```bash
-   dotfiles config --local status.showUntrackedFiles no
-   ```
-6. Making a hard reset to discard local change completely:
-   ```bash
-   dotfiles reset --hard
-   ```
-7. Installation is finish now, you can use regular git command to update your dotfiles:
-   ```bash
-   dotfiles status
-   dotfiles pull
-   ```
-   Relaunch your Alacritty terminal to see the changes.
+Install with one command:
+```bash
+curl -fsSL https://raw.githubusercontent.com/VideoCurio/nixos-dotfiles/refs/heads/main/.local/bin/install-dotfiles.sh | sh
+```
+COSMIC changes should be seen immediately, relaunch your Alacritty terminal to see the changes.
+Installation is finish now, you can use regular git command to update your dotfiles:
+```bash
+dotfiles status
+dotfiles pull
+``` 
 
 ## Development notes
 Initial set-up:
