@@ -26,7 +26,7 @@ fi
 
 alias dotfiles='$GIT_PATH --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 echo ".dotfiles/" >> "$HOME"/.gitignore
-git clone --bare https://github.com/VideoCurio/nixos-dotfiles "$HOME"/.dotfiles/
+$GIT_PATH clone --bare https://github.com/VideoCurio/nixos-dotfiles "$HOME"/.dotfiles/
 dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 dotfiles reset --hard
