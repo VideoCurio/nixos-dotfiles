@@ -54,7 +54,7 @@ prompt_mytheme_is_git_dir() {
 }
 
 prompt_mytheme_update_git_status() {
-    git_symbol=🔀
+    git_symbol='\ue702'
     ok_symbol=✅
     arrow_up_symbol=⬆️
     arrow_down_symbol=⬇️
@@ -71,17 +71,17 @@ prompt_mytheme_update_git_status() {
         else
             PROMPT_GIT_NB_MODIF_FILES="|${ok_symbol}"
         fi
-        PROMPT_GIT_STATUS=" ${git_symbol}($(git branch --show-current)${PROMPT_GIT_NB_MODIF_FILES}) "
+        PROMPT_GIT_STATUS=" ${git_symbol} ($(git branch --show-current)${PROMPT_GIT_NB_MODIF_FILES}) "
         echo -n "$PROMPT_GIT_STATUS"
     fi
 }
 
 # Python virtualenv
 prompt_mytheme_update_venv() {
-     python_symbol=🐍
+     python_symbol='\ue606'
 
      if [ -n "$VIRTUAL_ENV" ]; then
-        PROMPT_VENV_BASE=" ${python_symbol}($(basename $VIRTUAL_ENV))"
+        PROMPT_VENV_BASE=" ${python_symbol} ($(basename $VIRTUAL_ENV))"
         echo -n "$PROMPT_VENV_BASE"
      fi
 }
@@ -105,6 +105,7 @@ prompt_mytheme_setup() {
 
     prompt_symbol=🚀
     #prompt_symbol=😎
+    #prompt_symbol='\ue843'
     folder_symbol=📂
     clock_symbol=🕓
 
