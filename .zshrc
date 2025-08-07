@@ -122,9 +122,9 @@ prompt_mytheme_setup() {
 
     # UTF-8 symbol code see: https://symbl.cc/en/25E4/ "$'\xe2\x97\xa4'"
 
-    PROMPT_DIRECTORY="%K{blue}%F{$bg_color}"$'\xe2\x97\xa4'" ${folder_symbol} %F{white}%~ "
-    PROMPT_TIME="%K{yellow}%F{blue}"$'\xe2\x97\xa4'" ${clock_symbol} %F{white}%D{%T (%Z)}"
-    PROMPT_END="%k%b%F{yellow}"$'\xe2\x97\xa4'"%F{reset}"
+    PROMPT_DIRECTORY="%K{blue}%F{$bg_color}"$'\uE0B0'" %F{white}${folder_symbol} %~ "
+    PROMPT_TIME="%K{yellow}%F{blue}"$'\uE0B0'" %F{white}${clock_symbol} %D{%T (%Z)}"
+    PROMPT_END="%k%b%F{yellow}"$'\uE0B0'"%F{reset}"
     PROMPT_NEWLINE="$prompt_newline %B%F{$bg_color}"$'\xe2\xa4\xb7'"%b%f "
 
     # Guard against OhMyZsh themes overriding MyTheme.

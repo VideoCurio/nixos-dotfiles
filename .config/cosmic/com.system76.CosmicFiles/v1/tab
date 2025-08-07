@@ -1,5 +1,5 @@
 (
-    view: Grid,
+    view: List,
     folders_first: true,
     show_hidden: false,
     icon_sizes: (
