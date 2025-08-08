@@ -178,3 +178,6 @@ fi
 # fzf integration
 # by default, it is binded to Ctrl+r
 eval "$(fzf --zsh)"
+
+# zoxide integration
+eval "$(zoxide init --cmd cd zsh)"
