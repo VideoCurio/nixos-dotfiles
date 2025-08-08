@@ -25,6 +25,7 @@ Initial set-up:
 git init --bare $HOME/.dotfiles
 echo ".dotfiles/" >> $HOME/.gitignore
 echo ".config/cosmic/com.system76.CosmicComp/v1/xkb_config" >> $HOME/.gitignore
+echo ".config/cosmic/com.system76.CosmicBackground/" >> $HOME/.gitignore
 echo "alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 source $HOME/.zshrc
 dotfiles config --local status.showUntrackedFiles no

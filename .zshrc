@@ -105,7 +105,8 @@ prompt_mytheme_setup() {
 
     #prompt_symbol=🚀
     #prompt_symbol=😎
-    prompt_symbol='\uf31a' # Tux
+    #prompt_symbol='\uf31a' # Tux
+    prompt_symbol='\uf489' # Terminal
     folder_symbol=📂
     clock_symbol=🕓
 
@@ -123,7 +124,7 @@ prompt_mytheme_setup() {
 
     # UTF-8 symbol code see: https://symbl.cc/en/25E4/ "$'\xe2\x97\xa4'"
 
-    PROMPT_SYSTEM="%B%K{$bg_color}%F{$font_color}"$'\uF31A'" %n@%m"
+    PROMPT_SYSTEM="%B%K{$bg_color}%F{$font_color}"$'\uF489'" %n@%m"
     # If current path has more than 3 sub-direcory, shortened it
     PROMPT_DIRECTORY="%K{blue}%F{$bg_color}"$'\uE0B0'" %F{white}${folder_symbol} %(3~|.../%2~|%~)"
     PROMPT_TIME="%K{yellow}%F{blue}"$'\uE0B0'" %F{white}${clock_symbol} %D{%T (%Z)}"
