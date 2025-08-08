@@ -71,7 +71,7 @@ prompt_mytheme_update_git_status() {
         else
             PROMPT_GIT_NB_MODIF_FILES="|${ok_symbol}"
         fi
-        PROMPT_GIT_STATUS=" ${git_symbol} ($(git branch --show-current)${PROMPT_GIT_NB_MODIF_FILES}) "
+        PROMPT_GIT_STATUS=" ${git_symbol} ($(git branch --show-current)${PROMPT_GIT_NB_MODIF_FILES})"
         echo -n "$PROMPT_GIT_STATUS"
     fi
 }
@@ -95,7 +95,7 @@ prompt_mytheme_set_title() {
 
 prompt_mytheme_precmd() {
     prompt_mytheme_set_title
-    PROMPT="%B%K{$bg_color}%F{$font_color} ${prompt_symbol} %n@%m $PROMPT_DIRECTORY$(prompt_mytheme_update_git_status)$(prompt_mytheme_update_venv)$PROMPT_TIME$PROMPT_END$PROMPT_NEWLINE"
+    PROMPT="$PROMPT_SYSTEM $PROMPT_DIRECTORY$(prompt_mytheme_update_git_status)$(prompt_mytheme_update_venv)$PROMPT_TIME$PROMPT_END$PROMPT_NEWLINE"
 }
 
 # Define custom theme, like fade but better IMO, see https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
@@ -103,9 +103,9 @@ prompt_mytheme_setup() {
     autoload -U add-zsh-hook
     add-zsh-hook precmd prompt_mytheme_precmd
 
-    prompt_symbol=🚀
+    #prompt_symbol=🚀
     #prompt_symbol=😎
-    #prompt_symbol='\ue843'
+    prompt_symbol='\uf31a' # Tux
     folder_symbol=📂
     clock_symbol=🕓
 
@@ -123,7 +123,9 @@ prompt_mytheme_setup() {
 
     # UTF-8 symbol code see: https://symbl.cc/en/25E4/ "$'\xe2\x97\xa4'"
 
-    PROMPT_DIRECTORY="%K{blue}%F{$bg_color}"$'\uE0B0'" %F{white}${folder_symbol} %~ "
+    PROMPT_SYSTEM="%B%K{$bg_color}%F{$font_color}"$'\uF31A'" %n@%m"
+    # If current path has more than 3 sub-direcory, shortened it
+    PROMPT_DIRECTORY="%K{blue}%F{$bg_color}"$'\uE0B0'" %F{white}${folder_symbol} %(3~|.../%2~|%~)"
     PROMPT_TIME="%K{yellow}%F{blue}"$'\uE0B0'" %F{white}${clock_symbol} %D{%T (%Z)}"
     PROMPT_END="%k%b%F{yellow}"$'\uE0B0'"%F{reset}"
     PROMPT_NEWLINE="$prompt_newline %B%F{$bg_color}"$'\xe2\xa4\xb7'"%b%f "
@@ -144,6 +146,35 @@ prompt_themes+=( mytheme )
 # And load it
 prompt mytheme
 
+# Use modern completion system
+# Binded to Tab
+autoload -Uz compinit
+compinit -d ~/.cache/zcompdump
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Custom Key bindings
+bindkey '^f' autosuggest-accept # OR use bindkey -e for an emulation of VIM key bindings
+bindkey '^p' history-search-backward # search through history based on completion
+bindkey '^n' history-search-forward
+
+# Shell integrations
+# Ollama AI plugin, binded to Ctrl+i
 if [ -f ~/.zshrc-ai.plugin.zsh ]; then
     source ~/.zshrc-ai.plugin.zsh
 fi
+
+# fzf integration
+# by default, it is binded to Ctrl+r
+eval "$(fzf --zsh)"
