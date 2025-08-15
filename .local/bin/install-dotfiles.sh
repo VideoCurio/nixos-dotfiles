@@ -24,15 +24,16 @@ if [ ! -d "$HOME" ]; then
   exit 2
 fi
 
-alias dotfiles='$GIT_PATH --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+#alias dotfiles='$GIT_PATH --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 grep -qF ".dotfiles/" "$HOME"/.gitignore || echo ".dotfiles/" >> "$HOME"/.gitignore
 
 if [ ! -d "$HOME"/.dotfiles/ ]; then
   $GIT_PATH clone --bare https://github.com/VideoCurio/nixos-dotfiles "$HOME"/.dotfiles/
 fi
 
-dotfiles checkout || true
-dotfiles config --local status.showUntrackedFiles no
-dotfiles reset --hard
-dotfiles pull
-dotfiles status
+$GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" checkout || true
+$GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" config --local status.showUntrackedFiles no
+$GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" reset --hard
+$GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" pull
+$GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" status
