@@ -35,25 +35,10 @@
         ),
     ),
     (
-        name: "Jeux",
-        icon: "folder-symbolic",
-        filter: AppIds([
-            "steam",
-            "com.discordapp.Discord",
-            "input-remapper-gtk",
-            "input-remapper-autoload",
-            "TeamSpeak",
-            "nvidia-settings",
-        ]),
-    ),
-    (
         name: "Networks",
         icon: "folder-symbolic",
         filter: AppIds([
             "protonvpn-app",
-            "zenmap",
-            "org.wireshark.Wireshark",
-            "zenmap-root",
         ]),
     ),
 ]

@@ -27,7 +27,7 @@ alias du="dust"
 alias find="fd"
 # Custom dotfiles
 # See: https://github.com/VideoCurio/nixos-dotfiles
-alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+#alias dotfiles='/run/current-system/sw/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Keep 5000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=5000
