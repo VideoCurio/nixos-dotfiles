@@ -35,4 +35,4 @@ if [ ! -d "$HOME"/.dotfiles/ ]; then
   $GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" reset --hard
   $GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" pull
   $GIT_PATH --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" status
-if
+fi
