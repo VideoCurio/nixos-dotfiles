@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+# Install script for NixCOSMIC dotfiles as an NixOS package.
+# This script install the dotfiles from https://github.com/VideoCurio/nixos-dotfiles
+# Made for Linux and a COSMIC desktop environment.
+
+set -eu
+
+# Print help function
+usage ()
+{
+  echo -e "
+Usage: nixcosmic-dotfiles [options] <directory>
+  Where,
+    directory: Valid directory to copy the dotfiles into, like '/home/<user>' or '/etc/skel'.";
+
+  cat << EOF
+
+  Options:
+     -h, --help         Print this message.
+     --lang LANG        Preset COSMIC keyboard layout, "us" by default.
+     -v, --verbose      Print more information.
+
+  Examples:
+    Install dotfiles into home directory of user 'nixos' with French keyboard:
+      nixcosmic-dotfiles --lang fr /home/nixos/
+    Install as a skeleton for future user home directory:
+      nixcosmic-dotfiles /etc/skel/
+EOF
+  exit;
+}
+
+locale_keyboard="us";
+verbose=0;
+script_path="$(dirname "$0")"
+
+# Scripts arguments parse options
+ARGS=$(getopt --longoptions="verbose,help,lang:" --name "$0" --options ":hv" -- "$@")
+if [ $# -lt 1 ]; then
+  usage
+fi;
+
+INSTALL_DIR="${!#}"
+
+eval set -- "$ARGS"
+
+while true; do
+  case "$1" in
+    -v | --verbose)
+      verbose=1
+      shift
+      ;;
+    -h | --help)
+      usage
+      ;;
+    --lang)
+      locale_keyboard="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+# Check <directory>
+if [ ! -d "$INSTALL_DIR" ]; then
+  printf "\e[31mDirectory argument is invalid!\e[0m\n"
+  exit 2
+fi
+
+if [ $verbose -eq 1 ]; then
+  echo "path: $script_path"
+  echo "<directory>: $INSTALL_DIR"
+  echo "--lang: $locale_keyboard"
+  echo "--verbose: $verbose"
+fi
+
+printf "\e[32m Installing VideoCurio dotfiles...\e[0m\n"
+
+# Check nixcosmic-dotfiles files
+nixcosmic_dotfiles_path=$(nix-store --query --outputs $(which nixcosmic-dotfiles))
+nixcosmic_dotfiles_path=$(realpath "$nixcosmic_dotfiles_path"/share)
+
+if [ ! -d "$nixcosmic_dotfiles_path" ]; then
+  printf "\e[31m nixcosmic-dotfiles package not found!\e[0m\n"
+  exit 1
+fi
+
+if [ $verbose -eq 1 ]; then
+  printf "nixcosmic-dotfiles package share path: %s\n" "$nixcosmic_dotfiles_path"
+fi
+
+# Copying dotfiles into INSTALL_DIR
+install -D -m 644 -t "$INSTALL_DIR" "$nixcosmic_dotfiles_path"/.zshrc
+install -D -m 644 -t "$INSTALL_DIR" "$nixcosmic_dotfiles_path"/.zshrc-ai.plugin.zsh
+cp -r "$nixcosmic_dotfiles_path"/.config/ "$INSTALL_DIR"
+chmod -R u+w "$INSTALL_DIR"/.config/
+
+# Update COSMIC keyboard layout
+sed "s/layout: \".*/layout: \"${locale_keyboard}\",/g" -i "$INSTALL_DIR"/.config/cosmic/com.system76.CosmicComp/v1/xkb_config
+
+printf "\e[32mDotfiles installation done.\e[0m\n"
