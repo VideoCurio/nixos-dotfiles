@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Install script for NixCOSMIC dotfiles as an NixOS package.
+# Install script for CuriOS dotfiles as an NixOS package.
 # This script install the dotfiles from https://github.com/VideoCurio/nixos-dotfiles
 # Made for Linux and a COSMIC desktop environment.
 
@@ -10,7 +10,7 @@ set -eu
 usage ()
 {
   echo -e "
-Usage: nixcosmic-dotfiles [options] <directory>
+Usage: curios-dotfiles [options] <directory>
   Where,
     directory: Valid directory to copy the dotfiles into, like '/home/<user>' or '/etc/skel'.";
 
@@ -23,9 +23,9 @@ Usage: nixcosmic-dotfiles [options] <directory>
 
   Examples:
     Install dotfiles into home directory of user 'nixos' with French keyboard:
-      nixcosmic-dotfiles --lang fr /home/nixos/
+      curios-dotfiles --lang fr /home/nixos/
     Install as a skeleton for future user home directory:
-      nixcosmic-dotfiles /etc/skel/
+      curios-dotfiles /etc/skel/
 EOF
   exit;
 }
@@ -82,23 +82,23 @@ fi
 
 printf "\e[32m Installing VideoCurio dotfiles...\e[0m\n"
 
-# Check nixcosmic-dotfiles files
-nixcosmic_dotfiles_path=$(nix-store --query --outputs $(which nixcosmic-dotfiles))
-nixcosmic_dotfiles_path=$(realpath "$nixcosmic_dotfiles_path"/share)
+# Check curios-dotfiles files
+curios_dotfiles_path=$(nix-store --query --outputs $(which curios-dotfiles))
+curios_dotfiles_path=$(realpath "$curios_dotfiles_path"/share)
 
-if [ ! -d "$nixcosmic_dotfiles_path" ]; then
-  printf "\e[31m nixcosmic-dotfiles package not found!\e[0m\n"
+if [ ! -d "$curios_dotfiles_path" ]; then
+  printf "\e[31m curios-dotfiles package not found!\e[0m\n"
   exit 1
 fi
 
 if [ $verbose -eq 1 ]; then
-  printf "nixcosmic-dotfiles package share path: %s\n" "$nixcosmic_dotfiles_path"
+  printf "curios-dotfiles package share path: %s\n" "$curios_dotfiles_path"
 fi
 
 # Copying dotfiles into INSTALL_DIR
-install -D -m 644 -t "$INSTALL_DIR" "$nixcosmic_dotfiles_path"/.zshrc
-install -D -m 644 -t "$INSTALL_DIR" "$nixcosmic_dotfiles_path"/.zshrc-ai.plugin.zsh
-cp -r "$nixcosmic_dotfiles_path"/.config/ "$INSTALL_DIR"
+install -D -m 644 -t "$INSTALL_DIR" "$curios_dotfiles_path"/.zshrc
+install -D -m 644 -t "$INSTALL_DIR" "$curios_dotfiles_path"/.zshrc-ai.plugin.zsh
+cp -r "$curios_dotfiles_path"/.config/ "$INSTALL_DIR"
 chmod -R u+w "$INSTALL_DIR"/.config/
 
 # Update COSMIC keyboard layout
