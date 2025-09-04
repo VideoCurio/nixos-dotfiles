@@ -3,8 +3,8 @@
 
 { lib, stdenvNoCC, fetchFromGitHub }:
 stdenvNoCC.mkDerivation rec {
-  pname = "nixcosmic-dotfiles";
-  version = "0.2";
+  pname = "curios-dotfiles";
+  version = "0.3";
 
   src = fetchFromGitHub {
     owner = "VideoCurio";
@@ -21,7 +21,7 @@ stdenvNoCC.mkDerivation rec {
 
     mkdir -p  $out/bin/
     mkdir -p  $out/share/
-    install -D -m 555 -t $out/bin/ nixcosmic-dotfiles
+    install -D -m 555 -t $out/bin/ curios-dotfiles
     cp -r .config/ $out/share/
     install -D -m 644 -t $out/share/ .zshrc
     install -D -m 644 -t $out/share/ .zshrc-ai.plugin.zsh
@@ -30,7 +30,7 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   meta = {
-    description = "COSMIC Desktop Environment configuration files for NixCOSMIC";
+    description = "COSMIC Desktop Environment configuration files for CuriOS";
     homepage = "https://github.com/VideoCurio/nixos-dotfiles";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
