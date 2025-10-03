@@ -179,3 +179,5 @@ eval "$(fzf --zsh)"
 
 # zoxide integration
 eval "$(zoxide init --cmd cd zsh)"
+
+fastfetch
