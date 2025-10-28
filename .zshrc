@@ -25,6 +25,11 @@ alias top="btop"
 alias df="duf"
 alias du="dust"
 alias find="fd"
+# Matrix effect
+# alacritty --option 'window.startup_mode="Fullscreen"' -e tte.... ???? for a screensaver
+alias matrix="tte -i /etc/nixos/logo.txt --anchor-text c --canvas-height 0 --canvas-width 0 matrix --rain-color-gradient 92be92 185318 --rain-fall-delay-range '8-25' --rain-column-delay-range '5-15' --rain-time 300 --symbol-swap-chance 0.005 --color-swap-chance 0.001 --resolve-delay 5 --final-gradient-stops 389c38 2cff05 --final-gradient-steps 12 12 --final-gradient-frames 5 --final-gradient-direction diagonal --highlight-color dbffdb"
+# Help
+alias help="curios-manager"
 
 # Keep 5000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=5000
@@ -43,6 +48,8 @@ DISABLE_AUTO_TITLE="true"
 #eval $(ssh-agent)
 #ssh-add ~/.ssh/id_ed25519
 # OR config pam_ssh
+
+# For nerd fonts symbol, see: https://www.nerdfonts.com/cheat-sheet
 
 # git functions
 prompt_mytheme_is_git_dir() {
@@ -103,7 +110,8 @@ prompt_mytheme_setup() {
     #prompt_symbol=🚀
     #prompt_symbol=😎
     #prompt_symbol='\uf31a' # Tux
-    prompt_symbol='\uf489' # Terminal
+    #prompt_symbol='\uf489' # Terminal
+    prompt_symbol='\e843' # NixOS
     folder_symbol=📂
     clock_symbol=🕓
 
@@ -168,16 +176,19 @@ bindkey '^p' history-search-backward # search through history based on completio
 bindkey '^n' history-search-forward
 
 # Shell integrations
-# Ollama AI plugin, binded to Ctrl+i
+# Ollama AI plugin, bound to Ctrl+i
 if [ -f ~/.zshrc-ai.plugin.zsh ]; then
     source ~/.zshrc-ai.plugin.zsh
 fi
 
 # fzf integration
-# by default, it is binded to Ctrl+r
+# by default, it is bound to Ctrl+r
 eval "$(fzf --zsh)"
 
 # zoxide integration
 eval "$(zoxide init --cmd cd zsh)"
 
-fastfetch
+# Logo animation on launch
+if [ -f /etc/nixos/logo.txt ]; then
+  tte -i /etc/nixos/logo.txt --anchor-text c --canvas-width 0 sweep --final-gradient-stops 12488B 2AA1B3 --final-gradient-steps 12 12 --final-gradient-direction diagonal
+fi

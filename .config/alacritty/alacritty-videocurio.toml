@@ -1,4 +1,7 @@
 # Custom alacritty terminal configuration
+[terminal]
+shell = "/run/current-system/sw/bin/zsh"
+
 [window]
 opacity = 0.9
 
