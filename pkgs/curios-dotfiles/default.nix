@@ -10,7 +10,7 @@ stdenvNoCC.mkDerivation rec {
     owner = "VideoCurio";
     repo = "nixos-dotfiles";
     rev = version;
-    hash = "";
+    hash = "sha256-QwRt/qz1DPz/0jsi5eJ93v6qiTqdZRyow1Ijomm66Cs=";
   };
 
   dontPatch = true;
