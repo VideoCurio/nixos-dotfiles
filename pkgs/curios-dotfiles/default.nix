@@ -4,7 +4,7 @@
 { lib, stdenvNoCC, fetchFromGitHub }:
 stdenvNoCC.mkDerivation rec {
   pname = "curios-dotfiles";
-  version = "0.5";
+  version = "0.6";
 
   src = fetchFromGitHub {
     owner = "VideoCurio";

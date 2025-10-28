@@ -7,7 +7,7 @@
 set -eu
 
 #------------- Variables init
-readonly SCRIPT_VERSION="0.5";
+readonly SCRIPT_VERSION="0.6";
 VERBOSE=0;
 LOCALE_KEYBOARD="us";
 SCRIPT_PATH="$(dirname "$0")"
