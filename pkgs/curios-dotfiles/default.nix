@@ -4,13 +4,13 @@
 { lib, stdenvNoCC, fetchFromGitHub }:
 stdenvNoCC.mkDerivation rec {
   pname = "curios-dotfiles";
-  version = "0.3";
+  version = "0.6";
 
   src = fetchFromGitHub {
     owner = "VideoCurio";
     repo = "nixos-dotfiles";
     rev = version;
-    hash = "sha256-xhMmfMysxYHRXffirv0sFrdaupYllKGyEWx8HQMwg18=";
+    hash = "sha256-QwRt/qz1DPz/0jsi5eJ93v6qiTqdZRyow1Ijomm66Cs=";
   };
 
   dontPatch = true;

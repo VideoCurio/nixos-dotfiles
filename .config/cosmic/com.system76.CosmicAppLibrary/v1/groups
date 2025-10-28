@@ -1,5 +1,67 @@
 [
     (
+        name: "Chat",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "InstantMessaging",
+                "Chat",
+            ],
+            exclude: [],
+            include: [
+                "com.discordapp.Discord",
+            ],
+        ),
+    ),
+    (
+        name: "DevOps",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Development",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Office",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Office",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "AI",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Science",
+                "ArtificialIntelligence",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Networks",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Network",
+            ],
+            exclude: [
+                "com.discordapp.Discord",
+                "brave-browser",
+            ],
+            include: [],
+        ),
+    ),
+    (
         name: "cosmic-system",
         icon: "folder-symbolic",
         filter: Categories(
@@ -29,16 +91,7 @@
                 "com.system76.CosmicEdit",
                 "com.system76.CosmicFiles",
             ],
-            include: [
-                "nm-connection-editor",
-            ],
+            include: [],
         ),
-    ),
-    (
-        name: "Networks",
-        icon: "folder-symbolic",
-        filter: AppIds([
-            "protonvpn-app",
-        ]),
     ),
 ]

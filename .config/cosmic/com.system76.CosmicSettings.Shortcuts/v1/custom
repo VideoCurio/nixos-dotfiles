@@ -1,0 +1,57 @@
+{
+    (
+        modifiers: [
+            Super,
+            Alt,
+        ],
+        key: "m",
+        description: Some("Mistral LeChat AI"),
+    ): Spawn("brave --new-window --app=\'https://chat.mistral.ai/chat\'"),
+    (
+        modifiers: [
+            Super,
+            Alt,
+        ],
+        key: "d",
+        description: Some("Docker - lazydocker"),
+    ): Spawn("alacritty -e lazydocker"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("CuriOS Manager"),
+    ): Spawn("alacritty -e curios-manager"),
+    (
+        modifiers: [
+            Super,
+            Alt,
+        ],
+        key: "c",
+        description: Some("ChatGPT AI"),
+    ): Spawn("brave --new-window --app=\'https://chatgpt.com/\'"),
+    (
+        modifiers: [
+            Super,
+            Alt,
+        ],
+        key: "t",
+        description: Some("btop"),
+    ): Spawn("alacritty -e btop"),
+    (
+        modifiers: [
+            Super,
+            Alt,
+        ],
+        key: "o",
+        description: Some("Ollama OpenWebUI (local AI)"),
+    ): Spawn("brave --new-window --app=\'http://localhost:8080/\'"),
+    (
+        modifiers: [
+            Super,
+            Alt,
+        ],
+        key: "g",
+        description: Some("Grok AI"),
+    ): Spawn("brave --new-window --app=\'https://x.ai/grok\'"),
+}
