@@ -1,9 +1,9 @@
 {
     0: (
-        name: "Default-VideoCurio",
+        name: "Default-CuriOS",
         command: "",
-        syntax_theme_dark: "VideoCurio",
-        syntax_theme_light: "VideoCurio",
+        syntax_theme_dark: "CuriOS",
+        syntax_theme_light: "CuriOS",
         tab_title: "",
         working_directory: "",
         hold: false,
