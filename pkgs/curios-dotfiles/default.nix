@@ -1,13 +1,13 @@
-# NixOS VideoCurio dotfiles packages.
+# CuriOS dotfiles packages.
 # Set COSMIC, ZSH and various configuration files.
 
 { lib, stdenvNoCC, fetchFromGitHub }:
 stdenvNoCC.mkDerivation rec {
   pname = "curios-dotfiles";
-  version = "0.6";
+  version = "0.7";
 
   src = fetchFromGitHub {
-    owner = "VideoCurio";
+    owner = "CuriosLabs";
     repo = "nixos-dotfiles";
     rev = version;
     hash = "sha256-QwRt/qz1DPz/0jsi5eJ93v6qiTqdZRyow1Ijomm66Cs=";
@@ -31,7 +31,7 @@ stdenvNoCC.mkDerivation rec {
 
   meta = {
     description = "COSMIC Desktop Environment configuration files for CuriOS";
-    homepage = "https://github.com/VideoCurio/nixos-dotfiles";
+    homepage = "https://github.com/CuriosLabs/nixos-dotfiles";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
   };

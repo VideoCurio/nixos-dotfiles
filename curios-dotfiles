@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # Install script for CuriOS dotfiles as an NixOS package.
-# This script install the dotfiles from https://github.com/VideoCurio/nixos-dotfiles
+# This script install the dotfiles from https://github.com/CuriosLabs/nixos-dotfiles
 # Made for Linux and a COSMIC desktop environment.
 
 set -eu
 
 #------------- Variables init
-readonly SCRIPT_VERSION="0.6";
+readonly SCRIPT_VERSION="0.7";
 VERBOSE=0;
 LOCALE_KEYBOARD="us";
 SCRIPT_PATH="$(dirname "$0")"
@@ -87,7 +87,7 @@ if [ $VERBOSE -eq 1 ]; then
   echo "--verbose: $VERBOSE"
 fi
 
-printf "\e[32m Installing VideoCurio dotfiles...\e[0m\n"
+printf "\e[32m Installing CuriosLabs dotfiles...\e[0m\n"
 
 #------------- Check curios-dotfiles files
 curios_dotfiles_path=$(nix-store --query --outputs $(which curios-dotfiles))
